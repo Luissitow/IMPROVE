@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import improveLogo from "@/assets/logo-improve.jpg";
+import improveLogo from "@/assets/logo-improve.png";
 
 const PHRASES = ["Protege tu auto.", "Blinda tu pintura.", "Asegura tu inversión."];
 

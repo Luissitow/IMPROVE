@@ -1,5 +1,5 @@
 import { MessageCircle, MapPin, Phone, Mail, Instagram } from "lucide-react";
-import improveLogo from "@/assets/logo-improve.jpg";
+import improveLogo from "@/assets/logo-improve.png";
 import { WHATSAPP_URL } from "./whatsapp";
 
 export function Footer() {

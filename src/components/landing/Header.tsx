@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import improveLogo from "@/assets/logo-improve.jpg";
+import improveLogo from "@/assets/logo-improve.png";
 import { WHATSAPP_URL } from "./whatsapp";
 
 const NAV = [

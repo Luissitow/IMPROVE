@@ -12,10 +12,10 @@ type Service = {
 const SERVICES: Service[] = [
   {
     id: "01",
-    category: "Personalización",
-    title: "Full Wrap",
+    category: "Mantenimiento",
+    title: "Detailing",
     description:
-      "Renueva por completo la identidad de tu auto sin tocar la pintura original. El vinilo premium la resguarda de rayos UV, microrayones y desgaste, mientras tú disfrutas un color impecable que puedes revertir cuando quieras.",
+      "Recuperamos el acabado de agencia que el tiempo, los lavados agresivos y el sol le han robado a tu auto. Corrección de pintura por etapas para eliminar remolinos, marcas y opacidad.",
     featured: true,
   },
   {
@@ -27,17 +27,17 @@ const SERVICES: Service[] = [
   },
   {
     id: "03",
+    category: "Personalización",
+    title: "Full Wrap",
+    description:
+      "Renueva por completo la identidad de tu auto sin tocar la pintura original. El vinilo premium la resguarda de rayos UV, microrayones y desgaste, mientras tú disfrutas un color impecable que puedes revertir cuando quieras.",
+  },
+  {
+    id: "04",
     category: "Protección",
     title: "Recubrimiento Cerámico",
     description:
       "Olvídate de la pintura opaca, manchada por lluvia ácida o quemada por el sol. El sellado nano-cerámico mantiene tu auto brillante, hidrofóbico y protegido por años, con lavados mucho más rápidos.",
-  },
-  {
-    id: "04",
-    category: "Mantenimiento",
-    title: "Detailing",
-    description:
-      "Recuperamos el acabado de agencia que el tiempo, los lavados agresivos y el sol le han robado a tu auto. Corrección de pintura por etapas para eliminar remolinos, marcas y opacidad.",
   },
   {
     id: "05",
@@ -80,21 +80,23 @@ export function Services() {
           {SERVICES.map((s) => (
             <article
               key={s.id}
-              className={`group relative flex flex-col justify-between bg-black p-8 transition-colors hover:bg-white/[0.03] sm:p-10 ${
-                s.featured ? "md:col-span-4 md:row-span-2 bg-white text-black hover:bg-white" : "md:col-span-2"
+              className={`group relative flex flex-col justify-between p-8 transition-colors duration-300 sm:p-10 ${
+                s.featured
+                  ? "md:col-span-4 md:row-span-2 bg-white text-black hover:bg-black hover:text-white"
+                  : "md:col-span-2 bg-black text-white hover:bg-white hover:text-black"
               }`}
             >
               <div>
                 <div className="flex items-center justify-between">
                   <span
-                    className={`text-[10px] font-medium uppercase tracking-[0.3em] ${
-                      s.featured ? "text-black/60" : "text-white/50"
+                    className={`text-[10px] font-medium uppercase tracking-[0.3em] transition-colors duration-300 ${
+                      s.featured ? "text-black/60 group-hover:text-white/60" : "text-white/50 group-hover:text-black/50"
                     }`}
                   >
                     {s.id} · {s.category}
                   </span>
                   {s.featured ? (
-                    <span className="border border-black/40 px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.25em] text-black/70">
+                    <span className="border border-black/40 px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.25em] text-black/70 transition-colors duration-300 group-hover:border-white/40 group-hover:text-white/70">
                       Insignia
                     </span>
                   ) : null}
@@ -107,8 +109,10 @@ export function Services() {
                   {s.title}
                 </h3>
                 <p
-                  className={`mt-5 max-w-md text-sm leading-relaxed ${
-                    s.featured ? "text-black/70 sm:text-base" : "text-white/60"
+                  className={`mt-5 max-w-md text-sm leading-relaxed transition-colors duration-300 ${
+                    s.featured
+                      ? "text-black/70 sm:text-base group-hover:text-white/70"
+                      : "text-white/60 group-hover:text-black/60"
                   }`}
                 >
                   {s.description}
@@ -119,8 +123,8 @@ export function Services() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Cotizar ${s.title}`}
-                className={`mt-10 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] transition-transform group-hover:translate-x-1 ${
-                  s.featured ? "text-black" : "text-white"
+                className={`mt-10 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] transition-all duration-300 group-hover:translate-x-1 ${
+                  s.featured ? "text-black group-hover:text-white" : "text-white group-hover:text-black"
                 }`}
               >
                 Cotizar servicio <ArrowUpRight size={14} />
