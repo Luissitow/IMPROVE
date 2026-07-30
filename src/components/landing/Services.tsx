@@ -1,5 +1,5 @@
-import { ArrowUpRight } from "lucide-react";
-import { WHATSAPP_URL } from "./whatsapp";
+import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { whatsappUrl } from "./whatsapp";
 
 type Service = {
   id: string;
@@ -144,13 +144,14 @@ export function Services() {
                     {s.description}
                   </p>
                   <a
-                    href={WHATSAPP_URL}
+                    href={whatsappUrl(s.title)}
                     target="_blank"
                     rel="noreferrer"
-                    aria-label={`Cotizar ${s.title}`}
+                    aria-label={`Cotizar ${s.title} por WhatsApp`}
                     className="mt-6 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-black transition-all duration-300 group-hover:translate-x-1 group-hover:text-white"
                   >
-                    Cotizar servicio <ArrowUpRight size={14} />
+                    <MessageCircle size={14} /> Cotizar por WhatsApp{" "}
+                    <ArrowUpRight size={14} />
                   </a>
                 </div>
               </article>
@@ -175,13 +176,14 @@ export function Services() {
                   </p>
                 </div>
                 <a
-                  href={WHATSAPP_URL}
+                  href={whatsappUrl(s.title)}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label={`Cotizar ${s.title}`}
+                  aria-label={`Cotizar ${s.title} por WhatsApp`}
                   className="mt-10 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-white transition-all duration-300 group-hover:translate-x-1 group-hover:text-black"
                 >
-                  Cotizar servicio <ArrowUpRight size={14} />
+                  <MessageCircle size={14} /> Cotizar por WhatsApp{" "}
+                  <ArrowUpRight size={14} />
                 </a>
               </article>
             ),

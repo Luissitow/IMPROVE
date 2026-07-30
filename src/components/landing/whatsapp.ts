@@ -1,4 +1,24 @@
-export const WHATSAPP_NUMBER = "525500000000";
-export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-  "Hola IMPROVE, me gustaría cotizar un servicio para mi vehículo.",
-)}`;
+export const WHATSAPP_NUMBER = "527225518621";
+export const PHONE_DISPLAY = "+52 722 551 8621";
+
+export const ADDRESS =
+  "Av. Sebastián Lerdo de Tejada Pte. 906, Electricistas Locales, 50080 Toluca de Lerdo, Méx.";
+export const ADDRESS_SHORT = "Av. Lerdo Pte. 906, Toluca, Edo. de México";
+export const MAPS_QUERY = encodeURIComponent(
+  "Improve Wrap, Av. Sebastián Lerdo de Tejada Pte. 906, Electricistas Locales, 50080 Toluca de Lerdo",
+);
+export const MAPS_EMBED_URL = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`;
+export const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`;
+
+/**
+ * Link de WhatsApp con mensaje prellenado. Si se pasa un servicio, el mensaje
+ * lo menciona explícitamente para que la cotización llegue ya contextualizada.
+ */
+export function whatsappUrl(service?: string) {
+  const text = service
+    ? `Hola IMPROVE, vengo de la página web y me gustaría cotizar el servicio de ${service} para mi vehículo.`
+    : "Hola IMPROVE, vengo de la página web y me gustaría cotizar un servicio para mi vehículo.";
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+}
+
+export const WHATSAPP_URL = whatsappUrl();

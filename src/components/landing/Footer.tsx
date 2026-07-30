@@ -1,6 +1,13 @@
-import { MessageCircle, MapPin, Phone, Mail, Instagram } from "lucide-react";
+import { MessageCircle, MapPin, Phone, Clock, Facebook } from "lucide-react";
 import improveLogo from "@/assets/logo-improve.png";
-import { WHATSAPP_URL } from "./whatsapp";
+import {
+  ADDRESS,
+  MAPS_EMBED_URL,
+  MAPS_LINK,
+  PHONE_DISPLAY,
+  WHATSAPP_NUMBER,
+  WHATSAPP_URL,
+} from "./whatsapp";
 
 export function Footer() {
   return (
@@ -31,17 +38,40 @@ export function Footer() {
             </a>
 
             <ul className="mt-12 space-y-4 text-sm text-white/70">
-              <li className="flex items-center gap-3">
-                <MapPin size={16} className="text-white/40" /> Toluca, Estado de México
+              <li className="flex items-start gap-3">
+                <MapPin size={16} className="mt-0.5 shrink-0 text-white/40" />
+                <a
+                  href={MAPS_LINK}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-white"
+                >
+                  {ADDRESS}
+                </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={16} className="text-white/40" /> +52 55 0000 0000
+                <Phone size={16} className="shrink-0 text-white/40" />
+                <a
+                  href={`tel:+${WHATSAPP_NUMBER}`}
+                  className="transition-colors hover:text-white"
+                >
+                  {PHONE_DISPLAY}
+                </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail size={16} className="text-white/40" /> contacto@improve.mx
+                <Clock size={16} className="shrink-0 text-white/40" /> Lunes a sábado · Cierra
+                a las 7:00 p.m.
               </li>
               <li className="flex items-center gap-3">
-                <Instagram size={16} className="text-white/40" /> @improve.mx
+                <Facebook size={16} className="shrink-0 text-white/40" />
+                <a
+                  href="https://www.facebook.com/improvewrap"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-white"
+                >
+                  Improve Wrap
+                </a>
               </li>
             </ul>
           </div>
@@ -52,16 +82,26 @@ export function Footer() {
             </p>
             <div className="mt-5 aspect-[4/3] w-full overflow-hidden border border-white/10 grayscale">
               <iframe
-                title="Ubicación IMPROVE — Toluca"
-                src="https://www.google.com/maps?q=Toluca,+Estado+de+M%C3%A9xico&output=embed"
+                title="Ubicación IMPROVE — Av. Lerdo Pte. 906, Toluca"
+                src={MAPS_EMBED_URL}
                 className="h-full w-full"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
-            <p className="mt-4 text-xs uppercase tracking-[0.25em] text-white/40">
-              Servicio con cita previa
-            </p>
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
+              <p className="text-xs uppercase tracking-[0.25em] text-white/40">
+                Servicio con cita previa
+              </p>
+              <a
+                href={MAPS_LINK}
+                target="_blank"
+                rel="noreferrer"
+                className="text-xs font-semibold uppercase tracking-[0.25em] text-white/70 underline underline-offset-4 transition-colors hover:text-white"
+              >
+                Cómo llegar
+              </a>
+            </div>
           </div>
         </div>
 
