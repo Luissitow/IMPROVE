@@ -10,14 +10,14 @@ export function Hero() {
             Estudio Premium · Toluca, Estado de México
           </p>
           <h1 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] font-black uppercase leading-[0.95] text-neutral-900">
-            Protege tu pintura.
+            Personaliza y protege
             <br />
-            Asegura tu inversión.
+            tu auto.
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-neutral-600 sm:text-lg">
-            Las piedras, los insectos y los rayones arruinan la pintura de fábrica.
-            Nosotros la blindamos con tecnología avanzada para que tu auto luzca como
-            recién salido de la agencia, todos los días.
+            En IMPROVE transformamos y blindamos autos: personalización a tu
+            medida y protección de primer nivel, para que el tuyo se vea —y se conserve—
+            como recién salido de la agencia.
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">

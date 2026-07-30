@@ -5,6 +5,7 @@ type Service = {
   id: string;
   category: string;
   title: string;
+  slogan: string;
   description: string;
   featured?: boolean;
 };
@@ -14,6 +15,7 @@ const SERVICES: Service[] = [
     id: "01",
     category: "Mantenimiento",
     title: "Detailing",
+    slogan: "El acabado de agencia, de vuelta.",
     description:
       "Recuperamos el acabado de agencia que el tiempo, los lavados agresivos y el sol le han robado a tu auto. Corrección de pintura por etapas para eliminar remolinos, marcas y opacidad.",
     featured: true,
@@ -22,6 +24,7 @@ const SERVICES: Service[] = [
     id: "02",
     category: "Protección",
     title: "Paint Protection Film (PPF)",
+    slogan: "Protege tu pintura. Asegura tu inversión.",
     description:
       "Un blindaje invisible contra piedras en la carretera, insectos y rayones de estacionamiento. La película autorreparable absorbe el daño que hoy destruye tu pintura de fábrica, sin alterar el color original.",
   },
@@ -29,6 +32,7 @@ const SERVICES: Service[] = [
     id: "03",
     category: "Personalización",
     title: "Full Wrap",
+    slogan: "Otro auto, sin tocar la pintura.",
     description:
       "Renueva por completo la identidad de tu auto sin tocar la pintura original. El vinilo premium la resguarda de rayos UV, microrayones y desgaste, mientras tú disfrutas un color impecable que puedes revertir cuando quieras.",
   },
@@ -36,6 +40,7 @@ const SERVICES: Service[] = [
     id: "04",
     category: "Protección",
     title: "Recubrimiento Cerámico",
+    slogan: "Brillo que dura años, no lavados.",
     description:
       "Olvídate de la pintura opaca, manchada por lluvia ácida o quemada por el sol. El sellado nano-cerámico mantiene tu auto brillante, hidrofóbico y protegido por años, con lavados mucho más rápidos.",
   },
@@ -43,15 +48,49 @@ const SERVICES: Service[] = [
     id: "05",
     category: "Protección",
     title: "Película de Seguridad",
+    slogan: "Blinda tus cristales. Protege lo tuyo.",
     description:
       "Refuerza tus cristales frente a intentos de robo e impactos, y protege el interior del calor y los rayos UV que decoloran vestiduras y tablero.",
   },
   {
     id: "06",
     category: "Personalización",
-    title: "Rotulación & PDR",
+    title: "Rotulación",
+    slogan: "Tu marca, rodando por la ciudad.",
     description:
-      "Elimina abolladuras sin repintar y conserva la pintura original intacta, o proyecta tu marca con rotulación de precisión que no daña la carrocería al retirarse.",
+      "Proyecta tu marca o personaliza tu flotilla con rotulación de vinilo de precisión, que se retira sin dañar la pintura original.",
+  },
+  {
+    id: "07",
+    category: "Reparación",
+    title: "PDR",
+    slogan: "Sin abolladuras. Sin repintar.",
+    description:
+      "Eliminamos abolladuras leves con técnica de varillaje (PDR), sin repintar y conservando tu pintura de fábrica intacta. Ideal para granizo y topes de puerta.",
+  },
+  {
+    id: "08",
+    category: "Reparación",
+    title: "Hojalatería",
+    slogan: "Como si nunca hubiera pasado.",
+    description:
+      "Reparación de carrocería para daños mayores: reformamos el metal, aplicamos masilla y repintamos con un acabado idéntico al original.",
+  },
+  {
+    id: "09",
+    category: "Interiores",
+    title: "Tapicería",
+    slogan: "Tu interior, como nuevo.",
+    description:
+      "Renovamos, reparamos o personalizamos vestiduras y asientos con materiales de alta calidad, para que el interior luzca y se sienta como de agencia.",
+  },
+  {
+    id: "10",
+    category: "Personalización",
+    title: "Diseños & Gráficos",
+    slogan: "Tu auto, tu firma.",
+    description:
+      "Diseñamos y aplicamos gráficos, franjas y livery a la medida para darle a tu auto una identidad única, sin comprometer la carrocería.",
   },
 ];
 
@@ -71,66 +110,82 @@ export function Services() {
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-white/60 md:text-right">
-            Un catálogo compacto y decidido. Cada servicio se ejecuta con el mismo
+            Un catálogo completo y decidido. Cada servicio se ejecuta con el mismo
             nivel de detalle, materiales certificados y garantía indefinida.
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-6">
-          {SERVICES.map((s) => (
-            <article
-              key={s.id}
-              className={`group relative flex flex-col justify-between p-8 transition-colors duration-300 sm:p-10 ${
-                s.featured
-                  ? "md:col-span-4 md:row-span-2 bg-white text-black hover:bg-black hover:text-white"
-                  : "md:col-span-2 bg-black text-white hover:bg-white hover:text-black"
-              }`}
-            >
-              <div>
-                <div className="flex items-center justify-between">
-                  <span
-                    className={`text-[10px] font-medium uppercase tracking-[0.3em] transition-colors duration-300 ${
-                      s.featured ? "text-black/60 group-hover:text-white/60" : "text-white/50 group-hover:text-black/50"
-                    }`}
-                  >
-                    {s.id} · {s.category}
-                  </span>
-                  {s.featured ? (
+        <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-3">
+          {SERVICES.map((s) =>
+            s.featured ? (
+              // ---- Destacado: banner de ancho completo ----
+              <article
+                key={s.id}
+                className="group relative flex flex-col justify-between gap-8 bg-white p-8 text-black transition-colors duration-300 hover:bg-black hover:text-white sm:p-10 md:col-span-3 md:flex-row md:items-end"
+              >
+                <div className="md:max-w-xl">
+                  <div className="flex items-center gap-3">
+                    <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-black/60 transition-colors duration-300 group-hover:text-white/60">
+                      {s.id} · {s.category}
+                    </span>
                     <span className="border border-black/40 px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.25em] text-black/70 transition-colors duration-300 group-hover:border-white/40 group-hover:text-white/70">
                       Insignia
                     </span>
-                  ) : null}
+                  </div>
+                  <h3 className="mt-6 font-display text-4xl font-bold uppercase leading-tight sm:text-5xl md:text-6xl">
+                    {s.title}
+                  </h3>
+                  <p className="mt-3 text-lg font-medium uppercase tracking-[0.08em] text-black transition-colors duration-300 group-hover:text-white">
+                    {s.slogan}
+                  </p>
                 </div>
-                <h3
-                  className={`mt-8 font-display font-bold uppercase leading-tight ${
-                    s.featured ? "text-4xl sm:text-5xl md:text-6xl" : "text-2xl sm:text-3xl"
-                  }`}
-                >
-                  {s.title}
-                </h3>
-                <p
-                  className={`mt-5 max-w-md text-sm leading-relaxed transition-colors duration-300 ${
-                    s.featured
-                      ? "text-black/70 sm:text-base group-hover:text-white/70"
-                      : "text-white/60 group-hover:text-black/60"
-                  }`}
-                >
-                  {s.description}
-                </p>
-              </div>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`Cotizar ${s.title}`}
-                className={`mt-10 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] transition-all duration-300 group-hover:translate-x-1 ${
-                  s.featured ? "text-black group-hover:text-white" : "text-white group-hover:text-black"
-                }`}
+                <div className="md:max-w-sm">
+                  <p className="text-sm leading-relaxed text-black/70 transition-colors duration-300 group-hover:text-white/70 sm:text-base">
+                    {s.description}
+                  </p>
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Cotizar ${s.title}`}
+                    className="mt-6 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-black transition-all duration-300 group-hover:translate-x-1 group-hover:text-white"
+                  >
+                    Cotizar servicio <ArrowUpRight size={14} />
+                  </a>
+                </div>
+              </article>
+            ) : (
+              // ---- Tarjeta normal (3 por fila) ----
+              <article
+                key={s.id}
+                className="group relative flex flex-col justify-between bg-black p-8 text-white transition-colors duration-300 hover:bg-white hover:text-black sm:p-10"
               >
-                Cotizar servicio <ArrowUpRight size={14} />
-              </a>
-            </article>
-          ))}
+                <div>
+                  <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/50 transition-colors duration-300 group-hover:text-black/50">
+                    {s.id} · {s.category}
+                  </span>
+                  <h3 className="mt-8 font-display text-2xl font-bold uppercase leading-tight sm:text-3xl">
+                    {s.title}
+                  </h3>
+                  <p className="mt-3 text-sm font-medium uppercase tracking-[0.08em] text-white transition-colors duration-300 group-hover:text-black">
+                    {s.slogan}
+                  </p>
+                  <p className="mt-4 max-w-md text-sm leading-relaxed text-white/60 transition-colors duration-300 group-hover:text-black/60">
+                    {s.description}
+                  </p>
+                </div>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Cotizar ${s.title}`}
+                  className="mt-10 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-white transition-all duration-300 group-hover:translate-x-1 group-hover:text-black"
+                >
+                  Cotizar servicio <ArrowUpRight size={14} />
+                </a>
+              </article>
+            ),
+          )}
         </div>
       </div>
     </section>

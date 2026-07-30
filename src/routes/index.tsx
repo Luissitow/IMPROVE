@@ -8,13 +8,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Estudio premium en Toluca especializado en full wrap, PPF, detailing y recubrimiento cerámico. Protección y personalización para vehículos de alta gama.",
+          "Estudio premium en Toluca especializado en full wrap, PPF, detailing y recubrimiento cerámico. Protección y personalización para vehículos.",
       },
       { property: "og:title", content: "IMPROVE — Personalización Automotriz Premium" },
       {
         property: "og:description",
         content:
-          "Full wrap, PPF, cerámico y detailing para vehículos de alta gama. Toluca, Estado de México.",
+          "Full wrap, PPF, cerámico y detailing para vehículos. Toluca, Estado de México.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
