@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import improveLogo from "@/assets/logo-improve.png";
 
-const PHRASES = ["Protege tu auto.", "Blinda tu pintura.", "Asegura tu inversión."];
+const PHRASES = ["Manten tu auto como nuevo.", "Personalización a tu medida .", "Protege tu inversión." ];
 
 const PHRASE_MS = 1100;
 const LOGO_MS = 1100;
