@@ -58,9 +58,15 @@ export function Footer() {
                   {PHONE_DISPLAY}
                 </a>
               </li>
-              <li className="flex items-center gap-3">
-                <Clock size={16} className="shrink-0 text-white/40" /> Lunes a sábado · Cierra
-                a las 7:00 p.m.
+              <li className="flex items-start gap-3">
+                <Clock size={16} className="mt-0.5 shrink-0 text-white/40" />
+                <span>
+                  Lunes a viernes · 9:30 a.m. – 7:00 p.m.
+                  <br />
+                  Sábado · 9:30 a.m. – 2:00 p.m.
+                  <br />
+                  <span className="text-white/45">Domingo · Cerrado</span>
+                </span>
               </li>
               <li className="flex items-center gap-3">
                 <Facebook size={16} className="shrink-0 text-white/40" />

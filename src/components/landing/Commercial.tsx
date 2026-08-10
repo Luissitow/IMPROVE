@@ -114,6 +114,19 @@ export function Commercial({ onImmersiveChange }: CommercialProps) {
       className="relative bg-black"
     >
       <section className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black text-white">
+        {/* El material está grabado en vertical. En móvil llena la pantalla y se
+            ve completo; en escritorio, recortarlo a 16:9 dejaba una franja central
+            estirada y borrosa, así que se muestra entero sobre el mismo cuadro
+            desenfocado. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 hidden scale-110 bg-cover bg-center blur-2xl transition-opacity duration-700 md:block"
+          style={{
+            backgroundImage: "url(/media/comercial-poster.jpg)",
+            opacity: revealed ? 0.5 : 0,
+          }}
+        />
+
         <video
           ref={videoRef}
           src="/media/comercial.mp4"
@@ -123,7 +136,7 @@ export function Commercial({ onImmersiveChange }: CommercialProps) {
           playsInline
           preload={armed ? "auto" : "none"}
           aria-label="Video del estudio IMPROVE"
-          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
+          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700 md:object-contain"
           style={{ opacity: revealed ? 1 : 0 }}
         />
 
