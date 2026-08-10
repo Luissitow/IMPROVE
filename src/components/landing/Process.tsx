@@ -90,7 +90,7 @@ export function Process() {
                 <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.35em] text-neutral-500">
                   03 — Proceso
                 </p>
-                <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-black uppercase leading-[0.95]">
+                <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-black uppercase leading-[1.15]">
                   Un protocolo,
                   <br />
                   cuatro etapas.
@@ -183,7 +183,7 @@ export function Process() {
             <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.35em] text-neutral-500">
               03 — Proceso
             </p>
-            <h2 className="font-display text-[clamp(2rem,7vw,3rem)] font-black uppercase leading-[0.95]">
+            <h2 className="font-display text-[clamp(2rem,7vw,3rem)] font-black uppercase leading-[1.15]">
               Un protocolo,
               <br />
               cuatro etapas.

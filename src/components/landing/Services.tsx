@@ -105,7 +105,7 @@ export function Services() {
             </p>
             {/* leading holgado: PROTECCIÓN lleva acento en mayúscula y con
                 interlínea cerrada tocaba la línea de arriba */}
-            <h2 className="font-display text-[clamp(2rem,5vw,3.75rem)] font-black uppercase leading-[1.08]">
+            <h2 className="font-display text-[clamp(2rem,5vw,3.75rem)] font-black uppercase leading-[1.15]">
               Personalización.
               <br />
               Protección. Mantenimiento.

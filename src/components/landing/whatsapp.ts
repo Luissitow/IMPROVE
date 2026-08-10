@@ -1,8 +1,16 @@
 export const WHATSAPP_NUMBER = "527225518621";
 export const PHONE_DISPLAY = "+52 722 551 8621";
 
-/** Sitio del estudio que desarrolla el proyecto; se enlaza desde el footer. */
-export const ZYBER_URL = "https://zyber.company";
+export const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=100083191605817";
+export const INSTAGRAM_URL = "https://www.instagram.com/improvewrap/";
+
+/** Estudio que diseña y desarrolla el proyecto; se enlaza desde el footer. */
+export const ZYBER_URL = "https://zyber.com.mx";
+export const ZYBER_DOMAIN = "zyber.com.mx";
+export const ZYBER_WHATSAPP_NUMBER = "527226448900";
+export const ZYBER_WHATSAPP_URL = `https://wa.me/${ZYBER_WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  "Hola Luis, vengo del sitio de IMPROVE y me gustaría cotizar un sitio web para mi negocio.",
+)}`;
 
 export const ADDRESS =
   "Av. Sebastián Lerdo de Tejada Pte. 906, Electricistas Locales, 50080 Toluca de Lerdo, Méx.";

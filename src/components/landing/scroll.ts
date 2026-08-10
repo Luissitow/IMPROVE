@@ -45,6 +45,24 @@ export function smoothScrollTo(targetY: number, duration?: number) {
 
   const start = performance.now();
 
+  // Si el usuario toma el control (dedo, rueda o teclas), la animación cede:
+  // seguir moviendo la página bajo su gesto se siente como un tirón.
+  const cancel = () => {
+    if (activeAnimation) cancelAnimationFrame(activeAnimation);
+    activeAnimation = 0;
+    detach();
+  };
+
+  const detach = () => {
+    window.removeEventListener("wheel", cancel);
+    window.removeEventListener("touchstart", cancel);
+    window.removeEventListener("keydown", cancel);
+  };
+
+  window.addEventListener("wheel", cancel, { passive: true });
+  window.addEventListener("touchstart", cancel, { passive: true });
+  window.addEventListener("keydown", cancel);
+
   const step = (now: number) => {
     const t = Math.min(1, (now - start) / ms);
     window.scrollTo(0, from + distance * easeInOutCubic(t));
@@ -52,6 +70,7 @@ export function smoothScrollTo(targetY: number, duration?: number) {
       activeAnimation = requestAnimationFrame(step);
     } else {
       activeAnimation = 0;
+      detach();
     }
   };
 

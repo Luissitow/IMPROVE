@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Play } from "lucide-react";
 
 type Work = {
@@ -37,6 +37,14 @@ function WorkCard({ work }: { work: Work }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
 
+  // En pantallas táctiles no existe el hover: ahí el video responde al toque.
+  // Se resuelve después del montaje para que el HTML del servidor y el del
+  // cliente coincidan.
+  const [canHover, setCanHover] = useState(true);
+  useEffect(() => {
+    setCanHover(window.matchMedia("(hover: hover)").matches);
+  }, []);
+
   const poster = `/media/${work.slug}.jpg`;
   const video = `/media/${work.slug}.mp4`;
 
@@ -55,13 +63,25 @@ function WorkCard({ work }: { work: Work }) {
     setPlaying(false);
   };
 
+  const toggle = () => (playing ? stop() : start());
+
   return (
     <figure
-      className="group relative aspect-[3/4] overflow-hidden bg-neutral-900"
-      onMouseEnter={start}
-      onMouseLeave={stop}
-      onFocus={start}
-      onBlur={stop}
+      className="group relative aspect-[3/4] cursor-pointer overflow-hidden bg-neutral-900"
+      onMouseEnter={canHover ? start : undefined}
+      onMouseLeave={canHover ? stop : undefined}
+      onFocus={canHover ? start : undefined}
+      onBlur={canHover ? stop : undefined}
+      onClick={toggle}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggle();
+        }
+      }}
+      role="button"
+      aria-pressed={playing}
+      aria-label={`${work.service}. ${playing ? "Detener" : "Reproducir"} video`}
       tabIndex={0}
     >
       <img
@@ -123,7 +143,7 @@ export function Gallery() {
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-white/60 md:text-right">
             Cada pieza corresponde a un vehículo real intervenido en nuestro estudio.
-            Pasa el cursor sobre cualquiera para ver el trabajo en movimiento.
+            Toca o pasa el cursor sobre cualquiera para verlo en movimiento.
           </p>
         </div>
 

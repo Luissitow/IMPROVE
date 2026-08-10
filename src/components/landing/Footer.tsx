@@ -1,13 +1,26 @@
-import { MessageCircle, MapPin, Phone, Clock, Facebook } from "lucide-react";
+import {
+  MessageCircle,
+  MapPin,
+  Phone,
+  Clock,
+  Facebook,
+  Instagram,
+  ArrowUpRight,
+  ArrowRight,
+} from "lucide-react";
 import improveLogo from "@/assets/logo-improve.png";
 import {
   ADDRESS,
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
   MAPS_EMBED_URL,
   MAPS_LINK,
   PHONE_DISPLAY,
   WHATSAPP_NUMBER,
   WHATSAPP_URL,
+  ZYBER_DOMAIN,
   ZYBER_URL,
+  ZYBER_WHATSAPP_URL,
 } from "./whatsapp";
 
 export function Footer() {
@@ -19,7 +32,7 @@ export function Footer() {
             <p className="text-[11px] font-medium uppercase tracking-[0.35em] text-white/50">
               06 — Contacto
             </p>
-            <h2 className="mt-5 font-display text-[clamp(2rem,5vw,3.75rem)] font-black uppercase leading-[1.08]">
+            <h2 className="mt-5 font-display text-[clamp(2rem,5vw,3.75rem)] font-black uppercase leading-[1.15]">
               Hablemos
               <br />
               de tu vehículo.
@@ -70,9 +83,20 @@ export function Footer() {
                 </span>
               </li>
               <li className="flex items-center gap-3">
+                <Instagram size={16} className="shrink-0 text-white/40" />
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-white"
+                >
+                  @improvewrap
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
                 <Facebook size={16} className="shrink-0 text-white/40" />
                 <a
-                  href="https://www.facebook.com/improvewrap"
+                  href={FACEBOOK_URL}
                   target="_blank"
                   rel="noreferrer"
                   className="transition-colors hover:text-white"
@@ -123,20 +147,52 @@ export function Footer() {
             <p className="text-[11px] uppercase tracking-[0.25em] text-white/40">
               © {new Date().getFullYear()} IMPROVE. Todos los derechos reservados.
             </p>
-            <p className="mt-3 text-[11px] uppercase tracking-[0.25em] text-white/40">
-              Diseñado y desarrollado por{" "}
-              <a
-                href={ZYBER_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="text-white/70 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
-              >
-                Luis Enrique Bartolo Macario · Zyber
-              </a>
+            <p className="mt-3 text-[10px] uppercase tracking-[0.3em] text-white/30">
+              Diseñado y desarrollado por Luis Enrique Bartolo Macario · Zyber
             </p>
           </div>
         </div>
       </div>
+
+      {/* ===== Cierre de conversión del estudio =====
+          Banda aparte, centrada y con aire: quien llega hasta aquí ya recorrió
+          el trabajo, así que la pieza apela al deseo antes que a la ficha
+          técnica. Copy fijo, definido por el autor. */}
+      <aside className="border-t border-white/10 bg-white/[0.03]">
+        <div className="mx-auto flex max-w-3xl flex-col items-center px-5 py-24 text-center sm:px-8 sm:py-32">
+          <h2 className="font-display uppercase leading-[1.08]">
+            <span className="block text-[clamp(1.15rem,3vw,1.9rem)] font-medium tracking-[0.08em] text-white/50">
+              Tu negocio merece
+            </span>
+            {/* Segunda línea con el peso: es la que carga el deseo */}
+            <span className="mt-2 block text-[clamp(2.5rem,8vw,5rem)] font-black tracking-[-0.01em] text-white">
+              verse así.
+            </span>
+          </h2>
+
+          <p className="mt-8 max-w-lg text-sm leading-relaxed text-white/55 sm:text-base">
+            Una presencia digital a la altura de lo que haces.
+          </p>
+
+          <a
+            href={ZYBER_WHATSAPP_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-12 inline-flex items-center justify-center gap-3 border border-white bg-white px-9 py-5 text-[12px] font-semibold uppercase tracking-[0.25em] text-black transition-colors hover:bg-transparent hover:text-white"
+          >
+            Quiero mi sitio <ArrowRight size={15} />
+          </a>
+
+          <a
+            href={ZYBER_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-8 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-white/45 transition-colors hover:text-white"
+          >
+            {ZYBER_DOMAIN} <ArrowUpRight size={13} />
+          </a>
+        </div>
+      </aside>
 
       <a
         href={WHATSAPP_URL}
