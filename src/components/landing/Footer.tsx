@@ -16,7 +16,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-24">
           <div>
             <p className="text-[11px] font-medium uppercase tracking-[0.35em] text-white/50">
-              05 — Contacto
+              06 — Contacto
             </p>
             <h2 className="mt-5 font-display text-[clamp(2rem,5vw,3.75rem)] font-black uppercase leading-[0.95]">
               Hablemos

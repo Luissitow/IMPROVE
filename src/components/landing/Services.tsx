@@ -101,7 +101,7 @@ export function Services() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
           <div className="max-w-2xl">
             <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.35em] text-white/50">
-              01 — Servicios
+              02 — Servicios
             </p>
             <h2 className="font-display text-[clamp(2rem,5vw,3.75rem)] font-black uppercase leading-[0.95]">
               Personalización.

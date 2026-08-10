@@ -4,15 +4,22 @@ import improveLogo from "@/assets/logo-improve.png";
 import { WHATSAPP_URL } from "./whatsapp";
 
 const NAV = [
+  { href: "#estudio", label: "Estudio" },
   { href: "#servicios", label: "Servicios" },
   { href: "#proceso", label: "Proceso" },
   { href: "#galeria", label: "Galería" },
   { href: "#garantias", label: "Garantías" },
 ];
 
-export function Header() {
+export function Header({ hidden = false }: { hidden?: boolean }) {
   const [scrolled, setScrolled] = useState(true);
   const [open, setOpen] = useState(false);
+
+  // Si el header se retira mientras el menú móvil está abierto, ciérralo:
+  // de lo contrario quedaría un panel desplegado fuera de pantalla.
+  useEffect(() => {
+    if (hidden) setOpen(false);
+  }, [hidden]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(true);
@@ -23,11 +30,11 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled || open
           ? "border-b border-border bg-background/90 backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
-      }`}
+      } ${hidden ? "pointer-events-none -translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:h-20 sm:px-8">
         <a href="#top" className="flex items-center gap-2">

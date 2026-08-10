@@ -20,6 +20,13 @@ dist-ssr
 .wrangler/
 .dev.vars
 
+# Material original de cámara: pesa cientos de MB y quedaría en el historial
+# para siempre. Solo se versionan los derivados comprimidos de public/media.
+*.MOV
+*.MP4
+src/assets/DSC*
+src/assets/copy_*
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

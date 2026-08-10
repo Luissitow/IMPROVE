@@ -73,7 +73,7 @@ export function Process() {
             <div className="flex items-end justify-between gap-8">
               <div className="max-w-2xl">
                 <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.35em] text-neutral-500">
-                  02 — Proceso
+                  03 — Proceso
                 </p>
                 <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-black uppercase leading-[0.95]">
                   Un protocolo,
@@ -161,7 +161,7 @@ export function Process() {
         <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8">
           <div className="max-w-2xl">
             <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.35em] text-neutral-500">
-              02 — Proceso
+              03 — Proceso
             </p>
             <h2 className="font-display text-[clamp(2rem,7vw,3rem)] font-black uppercase leading-[0.95]">
               Un protocolo,

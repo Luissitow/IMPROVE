@@ -29,7 +29,7 @@ export function Guarantees() {
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-24">
           <div>
             <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.35em] text-neutral-500">
-              04 — Confianza
+              05 — Confianza
             </p>
             <h2 className="font-display text-[clamp(2rem,5vw,4rem)] font-black uppercase leading-[0.95]">
               Un compromiso
