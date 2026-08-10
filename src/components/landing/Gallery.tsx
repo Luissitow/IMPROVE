@@ -1,61 +1,44 @@
 import { useRef, useState } from "react";
 import { Play } from "lucide-react";
-import porscheAmarillo from "@/assets/estudio/porsche-amarillo.jpg";
-import porscheBlanco from "@/assets/estudio/porsche-blanco.jpg";
-import camaroRoja from "@/assets/estudio/camaro-roja.jpg";
-import pulidorasFlex from "@/assets/estudio/pulidoras-flex.jpg";
-import jeepAzul from "@/assets/estudio/jeep-azul.jpg";
-import shelbyFranjas from "@/assets/estudio/shelby-franjas.jpg";
 
 type Work = {
+  /** Nombre base en public/media: usa "<slug>.jpg" como portada y "<slug>.mp4" al pasar el cursor. */
+  slug: string;
   service: string;
   caption: string;
-  poster: string;
-  video: string;
 };
 
 const WORKS: Work[] = [
+  { slug: "wrap", service: "Full Wrap", caption: "Jeep Gladiator · Amarillo" },
   {
-    service: "Full Wrap",
-    caption: "Jeep Gladiator · Amarillo",
-    poster: porscheAmarillo,
-    video: "/media/wrap.mp4",
-  },
-  {
+    slug: "ppf",
     service: "Paint Protection Film",
-    caption: "Aplicación de película",
-    poster: porscheBlanco,
-    video: "/media/ppf.mp4",
+    caption: "Lexus IS · Película de protección",
   },
   {
+    slug: "ceramico",
     service: "Recubrimiento Cerámico",
     caption: "Challenger · Sellado nano",
-    poster: camaroRoja,
-    video: "/media/ceramico.mp4",
   },
+  { slug: "detailing", service: "Detailing", caption: "Corrección de pintura" },
   {
-    service: "Detailing",
-    caption: "Corrección de pintura",
-    poster: pulidorasFlex,
-    video: "/media/detailing.mp4",
-  },
-  {
+    slug: "lavado",
     service: "Lavado Técnico",
-    caption: "Descontaminación con espuma",
-    poster: jeepAzul,
-    video: "/media/lavado.mp4",
+    caption: "BMW X2 · Descontaminación con espuma",
   },
   {
+    slug: "graficos",
     service: "Diseños & Gráficos",
-    caption: "Shelby F-150 · Franjas",
-    poster: shelbyFranjas,
-    video: "/media/showroom.mp4",
+    caption: "Shelby F-150 · Líneas centrales en vinil",
   },
 ];
 
 function WorkCard({ work }: { work: Work }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
+
+  const poster = `/media/${work.slug}.jpg`;
+  const video = `/media/${work.slug}.mp4`;
 
   const start = () => {
     const v = videoRef.current;
@@ -82,7 +65,7 @@ function WorkCard({ work }: { work: Work }) {
       tabIndex={0}
     >
       <img
-        src={work.poster}
+        src={poster}
         alt={`${work.service} — ${work.caption}`}
         loading="lazy"
         className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ${
@@ -92,8 +75,8 @@ function WorkCard({ work }: { work: Work }) {
 
       <video
         ref={videoRef}
-        src={work.video}
-        poster={work.poster}
+        src={video}
+        poster={poster}
         muted
         loop
         playsInline
