@@ -103,7 +103,9 @@ export function Services() {
             <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.35em] text-white/50">
               02 — Servicios
             </p>
-            <h2 className="font-display text-[clamp(2rem,5vw,3.75rem)] font-black uppercase leading-[0.95]">
+            {/* leading holgado: PROTECCIÓN lleva acento en mayúscula y con
+                interlínea cerrada tocaba la línea de arriba */}
+            <h2 className="font-display text-[clamp(2rem,5vw,3.75rem)] font-black uppercase leading-[1.08]">
               Personalización.
               <br />
               Protección. Mantenimiento.
@@ -121,26 +123,26 @@ export function Services() {
               // ---- Destacado: banner de ancho completo ----
               <article
                 key={s.id}
-                className="group relative flex flex-col justify-between gap-8 bg-white p-8 text-black transition-colors duration-300 hover:bg-black hover:text-white sm:p-10 md:col-span-3 md:flex-row md:items-end"
+                className="group relative flex flex-col justify-between gap-8 bg-black p-8 text-white transition-colors duration-300 hover:bg-white hover:text-black sm:p-10 md:col-span-3 md:flex-row md:items-end"
               >
                 <div className="md:max-w-xl">
                   <div className="flex items-center gap-3">
-                    <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-black/60 transition-colors duration-300 group-hover:text-white/60">
+                    <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/50 transition-colors duration-300 group-hover:text-black/50">
                       {s.id} · {s.category}
                     </span>
-                    <span className="border border-black/40 px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.25em] text-black/70 transition-colors duration-300 group-hover:border-white/40 group-hover:text-white/70">
+                    <span className="border border-white/40 px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.25em] text-white/70 transition-colors duration-300 group-hover:border-black/40 group-hover:text-black/70">
                       Insignia
                     </span>
                   </div>
                   <h3 className="mt-6 font-display text-4xl font-bold uppercase leading-tight sm:text-5xl md:text-6xl">
                     {s.title}
                   </h3>
-                  <p className="mt-3 text-lg font-medium uppercase tracking-[0.08em] text-black transition-colors duration-300 group-hover:text-white">
+                  <p className="mt-3 text-lg font-medium uppercase tracking-[0.08em] text-white transition-colors duration-300 group-hover:text-black">
                     {s.slogan}
                   </p>
                 </div>
                 <div className="md:max-w-sm">
-                  <p className="text-sm leading-relaxed text-black/70 transition-colors duration-300 group-hover:text-white/70 sm:text-base">
+                  <p className="text-sm leading-relaxed text-white/60 transition-colors duration-300 group-hover:text-black/60 sm:text-base">
                     {s.description}
                   </p>
                   <a
@@ -148,7 +150,7 @@ export function Services() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`Cotizar ${s.title} por WhatsApp`}
-                    className="mt-6 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-black transition-all duration-300 group-hover:translate-x-1 group-hover:text-white"
+                    className="mt-6 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-white transition-all duration-300 group-hover:translate-x-1 group-hover:text-black"
                   >
                     <MessageCircle size={14} /> Cotizar por WhatsApp{" "}
                     <ArrowUpRight size={14} />

@@ -7,6 +7,7 @@ import {
   PHONE_DISPLAY,
   WHATSAPP_NUMBER,
   WHATSAPP_URL,
+  ZYBER_URL,
 } from "./whatsapp";
 
 export function Footer() {
@@ -18,7 +19,7 @@ export function Footer() {
             <p className="text-[11px] font-medium uppercase tracking-[0.35em] text-white/50">
               06 — Contacto
             </p>
-            <h2 className="mt-5 font-display text-[clamp(2rem,5vw,3.75rem)] font-black uppercase leading-[0.95]">
+            <h2 className="mt-5 font-display text-[clamp(2rem,5vw,3.75rem)] font-black uppercase leading-[1.08]">
               Hablemos
               <br />
               de tu vehículo.
@@ -118,9 +119,22 @@ export function Footer() {
               Estudio Premium · MX
             </span>
           </div>
-          <p className="text-[11px] uppercase tracking-[0.25em] text-white/40 sm:text-right">
-            © {new Date().getFullYear()} IMPROVE. Todos los derechos reservados.
-          </p>
+          <div className="sm:text-right">
+            <p className="text-[11px] uppercase tracking-[0.25em] text-white/40">
+              © {new Date().getFullYear()} IMPROVE. Todos los derechos reservados.
+            </p>
+            <p className="mt-3 text-[11px] uppercase tracking-[0.25em] text-white/40">
+              Diseñado y desarrollado por{" "}
+              <a
+                href={ZYBER_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="text-white/70 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+              >
+                Luis Enrique Bartolo Macario · Zyber
+              </a>
+            </p>
+          </div>
         </div>
       </div>
 

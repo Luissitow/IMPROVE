@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Play, Pause, SkipForward, Volume2, VolumeX } from "lucide-react";
+import { scrollToId } from "./scroll";
 
 const PHRASE = "Esto es lo que pasa aquí dentro .";
 const WORDS = PHRASE.split(" ");
@@ -103,7 +104,7 @@ export function Commercial({ onImmersiveChange }: CommercialProps) {
       v.pause();
       setPlaying(false);
     }
-    document.getElementById("servicios")?.scrollIntoView({ behavior: "smooth" });
+    scrollToId("servicios", 72);
   };
 
   return (
@@ -114,19 +115,6 @@ export function Commercial({ onImmersiveChange }: CommercialProps) {
       className="relative bg-black"
     >
       <section className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black text-white">
-        {/* El material está grabado en vertical. En móvil llena la pantalla y se
-            ve completo; en escritorio, recortarlo a 16:9 dejaba una franja central
-            estirada y borrosa, así que se muestra entero sobre el mismo cuadro
-            desenfocado. */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 hidden scale-110 bg-cover bg-center blur-2xl transition-opacity duration-700 md:block"
-          style={{
-            backgroundImage: "url(/media/comercial-poster.jpg)",
-            opacity: revealed ? 0.5 : 0,
-          }}
-        />
-
         <video
           ref={videoRef}
           src="/media/comercial.mp4"
@@ -136,7 +124,7 @@ export function Commercial({ onImmersiveChange }: CommercialProps) {
           playsInline
           preload={armed ? "auto" : "none"}
           aria-label="Video del estudio IMPROVE"
-          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700 md:object-contain"
+          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
           style={{ opacity: revealed ? 1 : 0 }}
         />
 
@@ -209,7 +197,9 @@ export function Commercial({ onImmersiveChange }: CommercialProps) {
 
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-xl">
-              <h2 className="font-display text-[clamp(1.75rem,5vw,3.5rem)] font-black uppercase leading-[0.95]">
+              {/* leading holgado: en mayúsculas con acento, la Ó de la segunda
+                  línea chocaba con la línea de arriba */}
+              <h2 className="font-display text-[clamp(1.75rem,5vw,3.5rem)] font-black uppercase leading-[1.12]">
                 Personalización
                 <br />y protección real.
               </h2>

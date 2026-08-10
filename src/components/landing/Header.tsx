@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { Menu, X } from "lucide-react";
 import improveLogo from "@/assets/logo-improve.png";
 import { WHATSAPP_URL } from "./whatsapp";
+import { scrollToId } from "./scroll";
+
+/** Alto del header fijo: la sección destino se detiene justo debajo. */
+const HEADER_OFFSET = 72;
 
 const NAV = [
   { href: "#estudio", label: "Estudio" },
@@ -20,6 +24,14 @@ export function Header({ hidden = false }: { hidden?: boolean }) {
   useEffect(() => {
     if (hidden) setOpen(false);
   }, [hidden]);
+
+  // Los enlaces siguen siendo anclas reales (funcionan sin JS y se pueden
+  // copiar); aquí solo se sustituye el salto por un recorrido animado.
+  const goTo = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) return;
+    e.preventDefault();
+    scrollToId(href.slice(1), HEADER_OFFSET);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(true);
@@ -52,6 +64,7 @@ export function Header({ hidden = false }: { hidden?: boolean }) {
             <a
               key={item.href}
               href={item.href}
+              onClick={(e) => goTo(e, item.href)}
               className={`text-[13px] font-medium uppercase tracking-[0.18em] transition-colors ${
                 scrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white"
               }`}
@@ -94,7 +107,10 @@ export function Header({ hidden = false }: { hidden?: boolean }) {
               <a
                 key={item.href}
                 href={item.href}
-                onClick={() => setOpen(false)}
+                onClick={(e) => {
+                  setOpen(false);
+                  goTo(e, item.href);
+                }}
                 className="border-b border-border py-4 text-sm font-medium uppercase tracking-[0.18em] text-foreground/80"
               >
                 {item.label}

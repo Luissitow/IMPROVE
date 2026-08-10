@@ -1,7 +1,15 @@
 import { ArrowDown } from "lucide-react";
+import type { MouseEvent } from "react";
 import { WHATSAPP_URL } from "./whatsapp";
+import { scrollToId } from "./scroll";
 
 export function Hero() {
+  // Recorrido animado hasta la sección, para que se vea la página de paso.
+  const goTo = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    scrollToId(id, 72);
+  };
+
   return (
     <section id="top" className="relative w-full bg-white">
       <div className="mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-20 pt-32 sm:px-8 sm:pb-28">
@@ -31,6 +39,7 @@ export function Hero() {
             </a>
             <a
               href="#servicios"
+              onClick={(e) => goTo(e, "servicios")}
               className="inline-flex items-center justify-center gap-2 border border-neutral-300 px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.25em] text-neutral-900 transition-colors hover:border-neutral-900"
             >
               Ver servicios
@@ -39,7 +48,8 @@ export function Hero() {
         </div>
 
         <a
-          href="#servicios"
+          href="#estudio"
+          onClick={(e) => goTo(e, "estudio")}
           className="mt-16 inline-flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.35em] text-neutral-500 transition-colors hover:text-neutral-900"
         >
           <span className="h-px w-10 bg-neutral-400" /> Descubre

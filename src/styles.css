@@ -147,21 +147,14 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* Los enlaces del menú apuntan a anclas: que el recorrido se vea, en vez
-     de saltar de golpe a la sección. */
-  html {
-    scroll-behavior: smooth;
-  }
+  /* El recorrido entre secciones lo anima scroll.ts, que controla la duración.
+     Por eso aquí no se define scroll-behavior: pelearía con esa animación. */
 
-  /* El header es fijo: sin este margen taparía el arranque de cada sección. */
+  /* El header es fijo: sin este margen taparía el arranque de cada sección
+     cuando el salto lo hace el navegador (por ejemplo, al abrir un enlace
+     con ancla directamente). */
   [id] {
     scroll-margin-top: 5rem;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
   }
 }
 

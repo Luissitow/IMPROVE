@@ -1,6 +1,9 @@
 export const WHATSAPP_NUMBER = "527225518621";
 export const PHONE_DISPLAY = "+52 722 551 8621";
 
+/** Sitio del estudio que desarrolla el proyecto; se enlaza desde el footer. */
+export const ZYBER_URL = "https://zyber.company";
+
 export const ADDRESS =
   "Av. Sebastián Lerdo de Tejada Pte. 906, Electricistas Locales, 50080 Toluca de Lerdo, Méx.";
 export const ADDRESS_SHORT = "Av. Lerdo Pte. 906, Toluca, Edo. de México";

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Droplets, Wrench, Sparkles, ClipboardCheck } from "lucide-react";
+import { smoothScrollTo } from "./scroll";
 
 const STEPS = [
   {
@@ -60,6 +61,20 @@ export function Process() {
     };
   }, []);
 
+  // Al pulsar un paso, lleva el scroll al punto del recorrido donde ese paso
+  // queda activo. El resaltado lo sigue calculando onScroll, así que la
+  // animación de la sección se conserva igual que al desplazarse a mano.
+  const goToStep = (index: number) => {
+    const el = wrapperRef.current;
+    if (!el) return;
+    const total = el.offsetHeight - window.innerHeight;
+    if (total <= 0) return;
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    // El centro del tramo del paso, para no quedar en el límite con el vecino.
+    const progress = (index + 0.5) / STEPS.length;
+    smoothScrollTo(top + progress * total);
+  };
+
   return (
     <section id="proceso" className="relative border-t border-border bg-white text-neutral-900">
       {/* ===== Desktop: sección fija con pasos que se resaltan al hacer scroll ===== */}
@@ -109,14 +124,18 @@ export function Process() {
                 const Icon = step.icon;
                 const isActive = i === active;
                 return (
-                  <li
-                    key={step.title}
-                    className={`flex flex-col justify-between rounded-sm p-6 transition-all duration-500 lg:p-8 ${
-                      isActive
-                        ? "scale-[1.03] bg-neutral-900 text-white shadow-2xl"
-                        : "bg-neutral-50 text-neutral-900 opacity-40"
-                    }`}
-                  >
+                  <li key={step.title} className="contents">
+                    <button
+                      type="button"
+                      onClick={() => goToStep(i)}
+                      aria-label={`Ir al paso ${i + 1}: ${step.title}`}
+                      aria-current={isActive ? "step" : undefined}
+                      className={`flex cursor-pointer flex-col justify-between rounded-sm p-6 text-left transition-all duration-500 hover:opacity-100 lg:p-8 ${
+                        isActive
+                          ? "scale-[1.03] bg-neutral-900 text-white shadow-2xl"
+                          : "bg-neutral-50 text-neutral-900 opacity-40"
+                      }`}
+                    >
                     <div>
                       <div className="flex items-center justify-between">
                         <span
@@ -143,11 +162,12 @@ export function Process() {
                         {step.description}
                       </p>
                     </div>
-                    <div
-                      className={`mt-10 h-px transition-all duration-500 ${
-                        isActive ? "w-16 bg-white/70" : "w-8 bg-neutral-400"
-                      }`}
-                    />
+                      <div
+                        className={`mt-10 h-px transition-all duration-500 ${
+                          isActive ? "w-16 bg-white/70" : "w-8 bg-neutral-400"
+                        }`}
+                      />
+                    </button>
                   </li>
                 );
               })}
