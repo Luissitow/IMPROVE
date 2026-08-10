@@ -60,6 +60,13 @@ src/
 
 Cotizaciones y citas a través del botón de **WhatsApp** integrado en el sitio.
 
+Estudio: Av. Sebastián Lerdo de Tejada Pte. 906, Electricistas Locales, 50080 Toluca de Lerdo, Méx.
+Teléfono: +52 722 551 8621
+
+##  Autoría
+
+Diseñado y desarrollado por **Luis Enrique Bartolo Macario — Zyber**.
+
 ---
 
 <sub>© IMPROVE — Todos los derechos reservados.</sub>
