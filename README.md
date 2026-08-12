@@ -28,19 +28,42 @@ Landing page de alto impacto para un estudio especializado en _full wrap_, PPF (
 
 ##  Puesta en marcha
 
+El gestor de paquetes del proyecto es **pnpm**.
+
 ```bash
 # Instalar dependencias
-npm install
+pnpm install
 
-# Servidor de desarrollo (http://localhost:8080)
-npm run dev
+# Servidor de desarrollo
+pnpm dev
 
-# Compilar para producción
-npm run build
+# Compilar el sitio estático en build/
+pnpm build
 
-# Previsualizar el build
-npm run preview
+# Revisar build/ tal como lo servirá el hosting (http://localhost:4180)
+pnpm preview:static
 ```
+
+##  Despliegue en Hostinger
+
+`pnpm build` deja en **`build/`** el sitio completo como archivos estáticos:
+`index.html`, los assets con hash, las fotos y videos, los iconos y un
+`.htaccess` ya configurado. No hay nada que ejecutar en el servidor.
+
+1. Corre `pnpm build`.
+2. Entra a hPanel → **Administrador de archivos** (o conéctate por FTP).
+3. Sube **el contenido** de `build/` dentro de `public_html`, no la carpeta en sí.
+   En `public_html` deben quedar `index.html`, `assets/`, `media/` y `.htaccess`
+   al mismo nivel.
+4. Si el administrador de archivos oculta `.htaccess`, activa «mostrar archivos
+   ocultos»: ese archivo hace que las rutas del sitio no devuelvan 404 y define
+   el cacheo de los assets.
+
+Para revisar antes de subir, `pnpm preview:static` sirve `build/` solo como
+archivos, igual que el hosting.
+
+> El build compila primero un servidor temporal en `.output/` únicamente para
+> capturar el HTML ya renderizado; ese servidor **no** se sube.
 
 ##  Estructura
 

@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 .output
+# Carpeta que se sube a Hostinger; se regenera con `pnpm build`
+build
 .vinxi
 .tanstack/**
 .nitro

@@ -9,9 +9,11 @@
   "packageManager": "pnpm@11.5.0",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "vite build && node scripts/build-static.mjs",
+    "build:server": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
+    "preview:static": "node scripts/serve-static.mjs",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
