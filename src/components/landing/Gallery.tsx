@@ -13,7 +13,7 @@ const WORKS: Work[] = [
   {
     slug: "ppf",
     service: "Paint Protection Film",
-    caption: "Lexus IS · Película de protección",
+    caption: "Lexus RX · Película de protección",
   },
   {
     slug: "ceramico",
